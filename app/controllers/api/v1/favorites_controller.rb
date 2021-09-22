@@ -10,8 +10,7 @@ lized_json
   if @favorite.save
    head :ok
   else
-   render json: { errors: @favorite.errors.full_messages }, status:
-:unprocessable_entity
+   render json: { errors: @favorite.errors.full_messages }, status: :unprocessable_entity
   end
  end
  
