@@ -1,4 +1,9 @@
-class Api::V1::RecommendationsController < ApplicationController
-  def index
+# frozen_string_literal: true
+
+module Api
+  module V1
+    class RecommendationsController < ApplicationController
+      def index; end
+    end
   end
 end

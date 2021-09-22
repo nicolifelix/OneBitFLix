@@ -6,3 +6,6 @@ default: &default
 development:
  <<: *default
  database: onebitflix_development
+test:
+  <<: *default
+  database: onebitflix_test

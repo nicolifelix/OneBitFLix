@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CreateMovies < ActiveRecord::Migration[5.2]
   def change
-    create_table :movies do |t|	
+    create_table :movies do |t|
       t.boolean :highlighted, default: false
       t.string :title
       t.text :description

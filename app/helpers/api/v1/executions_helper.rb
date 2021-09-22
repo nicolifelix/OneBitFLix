@@ -1,2 +1,8 @@
-module Api::V1::ExecutionsHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module ExecutionsHelper
+    end
+  end
 end

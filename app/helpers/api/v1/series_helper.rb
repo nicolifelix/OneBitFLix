@@ -1,2 +1,8 @@
-module Api::V1::SeriesHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module SeriesHelper
+    end
+  end
 end

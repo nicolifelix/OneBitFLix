@@ -1,2 +1,8 @@
-module Api::V1::FavoritesHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module FavoritesHelper
+    end
+  end
 end

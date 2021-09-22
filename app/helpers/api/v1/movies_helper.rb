@@ -1,2 +1,8 @@
-module Api::V1::MoviesHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module MoviesHelper
+    end
+  end
 end
