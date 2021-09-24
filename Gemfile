@@ -13,6 +13,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
+gem 'rdoc'
+require 'rdoc/rdoc'
+
+# AWS
+gem "aws-sdk-s3"
 # Autenticação
 gem 'devise'
 # Serialização do Json

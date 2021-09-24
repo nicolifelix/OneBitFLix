@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Player < ApplicationRecord
   belongs_to :movie
   belongs_to :user
@@ -7,7 +5,7 @@ class Player < ApplicationRecord
 
   private
 
-  def set_start_date
-    self.start_date ||= Time.zone.now
-  end
+    def set_start_date
+      self.start_date ||= Time.zone.now
+    end
 end
