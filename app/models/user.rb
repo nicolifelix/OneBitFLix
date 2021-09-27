@@ -15,7 +15,9 @@ class User < ApplicationRecord
 
 
 
-# Esse método pede que usuário digite o nome completo ao realizar o login
+# TESTE: Esse método pede que usuário digite o nome completo ao realizar o login
+# @param String
+# @return 
   def titulo_completo
     "#{name} - Email: #{email}"
   end

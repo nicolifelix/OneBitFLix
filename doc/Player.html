@@ -69,7 +69,17 @@
 
     
     
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-set_start_date">#set_start_date</a>
+    
+  </ul>
+</div>
+
   </div>
 </nav>
 
@@ -93,6 +103,51 @@
     
 
     
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-set_start_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_start_date</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Método indica que o filme/episódio foi iniciado.</p>
+
+<pre class="ruby"><span class="ruby-ivar">@param</span>
+<span class="ruby-ivar">@return</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="set_start_date-source">
+            <pre><span class="ruby-comment"># File app/models/player.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_start_date</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start_date</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">now</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
   </section>
 
 </main>

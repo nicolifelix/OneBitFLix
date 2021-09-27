@@ -128,13 +128,13 @@
 
           
           <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20210920145731_devise_create_users.rb, line 4</span>
+            <pre><span class="ruby-comment"># File db/migrate/20210924194920_devise_create_users.rb, line 2</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
   <span class="ruby-identifier">create_table</span> <span class="ruby-value">:users</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:name</span>
     <span class="ruby-comment">## Database authenticatable</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:email</span>,              <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">default:</span> <span class="ruby-string">&#39;&#39;</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:encrypted_password</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">default:</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:email</span>,              <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">default:</span> <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:encrypted_password</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">default:</span> <span class="ruby-string">&quot;&quot;</span>
 
     <span class="ruby-comment">## Recoverable</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span>   <span class="ruby-value">:reset_password_token</span>
@@ -144,11 +144,11 @@
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:remember_created_at</span>
 
     <span class="ruby-comment">## Trackable</span>
-    <span class="ruby-comment"># t.integer  :sign_in_count, default: 0, null: false</span>
-    <span class="ruby-comment"># t.datetime :current_sign_in_at</span>
-    <span class="ruby-comment"># t.datetime :last_sign_in_at</span>
-    <span class="ruby-comment"># t.inet     :current_sign_in_ip</span>
-    <span class="ruby-comment"># t.inet     :last_sign_in_ip</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">integer</span>  <span class="ruby-value">:sign_in_count</span>, <span class="ruby-value">default:</span> <span class="ruby-value">0</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:current_sign_in_at</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:last_sign_in_at</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">inet</span>     <span class="ruby-value">:current_sign_in_ip</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">inet</span>     <span class="ruby-value">:last_sign_in_ip</span>
 
     <span class="ruby-comment">## Confirmable</span>
     <span class="ruby-comment"># t.string   :confirmation_token</span>
@@ -160,6 +160,7 @@
     <span class="ruby-comment"># t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts</span>
     <span class="ruby-comment"># t.string   :unlock_token # Only if unlock strategy is :email or :both</span>
     <span class="ruby-comment"># t.datetime :locked_at</span>
+
 
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span> <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">end</span>

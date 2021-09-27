@@ -1,11 +1,11 @@
 class Serie < ApplicationRecord
   include Highlightable
   include PgSearch
-  multisearchable against: [:title]
-  belongs_to :category
-  has_many :reviews, as: :reviewable
+  multisearchable against: [:title]#incluso nas pesquisas de séries e filmes
+  belongs_to :category #relacionado com categoria
+  has_many :reviews, as: :reviewable #possui vários reviews
   has_many :episodes, ->{ order(:episode_number) }, class_name: "Movie", dependent: :destroy
-  belongs_to :last_watched_episode, class_name: "Movie", optional: true
+  belongs_to :last_watched_episode, class_name: "Movie", optional: true 
   validates :title, presence: true
   validates :description, presence: true
   validates :thumbnail_key, presence: true

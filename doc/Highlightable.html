@@ -134,7 +134,7 @@
 
           
           <div class="method-source-code" id="has_any_other_highlighted-3F-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/highlightable.rb, line 15</span>
+            <pre><span class="ruby-comment"># File app/models/concerns/highlightable.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_any_other_highlighted?</span>(<span class="ruby-identifier">model</span>)
   <span class="ruby-identifier">records</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">highlighted:</span> <span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">model</span>
@@ -171,7 +171,7 @@
 
           
           <div class="method-source-code" id="single_highlight-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/highlightable.rb, line 7</span>
+            <pre><span class="ruby-comment"># File app/models/concerns/highlightable.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">single_highlight</span>
   <span class="ruby-identifier">any_entity</span> = <span class="ruby-identifier">has_any_other_highlighted?</span>(<span class="ruby-constant">Movie</span>)
   <span class="ruby-identifier">any_entity</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">has_any_other_highlighted?</span>(<span class="ruby-constant">Serie</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">any_entity</span>

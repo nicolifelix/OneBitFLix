@@ -77,6 +77,10 @@
     
     <li ><a href="#method-i-index">#index</a>
     
+    <li ><a href="#method-i-type_params">#type_params</a>
+    
+    <li ><a href="#method-i-type_whitelist">#type_whitelist</a>
+    
   </ul>
 </div>
 
@@ -122,17 +126,94 @@
 
         <div class="method-description">
           
-          
+          <p>Método para definir itens apresentados na tela inicial do app @param @return</p>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/dashboards_controller.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/dashboards_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
   <span class="ruby-identifier">type_params</span> <span class="ruby-keyword">and</span> (<span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">performed?</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-constant">DashboardService</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>], <span class="ruby-identifier">current_user</span>).<span class="ruby-identifier">perform</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">json:</span> <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-type_params" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">type_params</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Método para forçar categoria na url da index @param @return</p>
+          
+          
+
+          
+          <div class="method-source-code" id="type_params-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/dashboards_controller.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_params</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">||=</span> <span class="ruby-string">&quot;category&quot;</span>
+  <span class="ruby-identifier">type_whitelist</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-type_whitelist" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">type_whitelist</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Método que verifica os parâmetros para exibição do conteúdo no index. @param @return</p>
+          
+          
+
+          
+          <div class="method-source-code" id="type_whitelist-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/dashboards_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_whitelist</span>
+  <span class="ruby-keyword">unless</span> [<span class="ruby-string">&quot;category&quot;</span>, <span class="ruby-string">&quot;keep_watching&quot;</span>, <span class="ruby-string">&quot;highlight&quot;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>])
+    <span class="ruby-identifier">render</span> <span class="ruby-value">json:</span> { <span class="ruby-value">errors:</span> <span class="ruby-string">&quot;Unpermitted type parameter&quot;</span> }, <span class="ruby-value">status:</span> <span class="ruby-value">:forbidden</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

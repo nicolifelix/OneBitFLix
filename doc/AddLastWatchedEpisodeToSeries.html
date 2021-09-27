@@ -128,7 +128,7 @@
 
           
           <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20210920172416_add_last_watched_episode_to_series.rb, line 4</span>
+            <pre><span class="ruby-comment"># File db/migrate/20180519173759_add_last_watched_episode_to_series.rb, line 2</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
   <span class="ruby-identifier">add_reference</span> <span class="ruby-value">:series</span>, <span class="ruby-value">:last_watched_episode</span>, <span class="ruby-value">foreign_key:</span> { <span class="ruby-value">to_table:</span> <span class="ruby-value">:movies</span> }
 <span class="ruby-keyword">end</span></pre>

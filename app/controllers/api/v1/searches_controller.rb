@@ -1,4 +1,9 @@
 class Api::V1::SearchesController < ApplicationController
+
+  # BUsca no BD e exibe lista com resultados de uma busca
+  # @param
+  # @return JSON
+  # @return Serialized
   def index
     check_search_value and (return if performed?)
     search = PgSearch.multisearch(params[:value]).order("created_at DESC")
@@ -6,7 +11,9 @@ class Api::V1::SearchesController < ApplicationController
   end
 
   private
-
+    # Método para definir parâmetros de busca
+    # @param String
+    # @return JSON
     def check_search_value
       if params[:value].present? && params[:value].length < 3
         render json: { errors: "Parameter :value must have at least 3 characters" }

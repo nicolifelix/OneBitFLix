@@ -1,9 +1,9 @@
 class Movie < ApplicationRecord
   include Highlightable
-  include PgSearch
-  multisearchable against: [:title], if: lambda{ |record| record.serie.nil? }
-  belongs_to :serie, optional: true
-  belongs_to :category, optional: true
+  include PgSearch::Model
+  multisearchable against: [:title], if: lambda{ |record| record.serie.nil? } # if: lambda -> episódio de uma série não dev ser apresentado solto..
+  belongs_to :serie, optional: true #relacionado com série
+  belongs_to :category, optional: true #relacionado com categoria
   has_many :reviews, as: :reviewable
   has_many :players, dependent: :destroy
   has_one :watched_serie, class_name: "Serie", foreign_key: "last_watched_episode_id", dependent: :nullify
@@ -15,8 +15,10 @@ class Movie < ApplicationRecord
   validates :category, presence: true, if: ->{ serie.nil? }
   validate :highlight_episode
 
+  #Método valida se o highlight está ativo em algum epsódio de série.
+  # @param
+  # @return
   private
-
     def highlight_episode
       if self.serie.present? && self.highlighted == true
         errors.add(:highlight_episode, "It's not possible to highlight an serie episode")

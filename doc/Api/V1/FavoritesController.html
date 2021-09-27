@@ -79,7 +79,11 @@
     
     <li ><a href="#method-i-destroy">#destroy</a>
     
+    <li ><a href="#method-i-favorite_params">#favorite_params</a>
+    
     <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-set_favorite">#set_favorite</a>
     
   </ul>
 </div>
@@ -126,13 +130,13 @@
 
         <div class="method-description">
           
-          
+          <p>Método para favoritar item @param @return JSON</p>
           
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 10</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
   <span class="ruby-ivar">@favorite</span> = <span class="ruby-constant">Favorite</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">favorite_params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">user:</span> <span class="ruby-identifier">current_user</span>))
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@favorite</span>.<span class="ruby-identifier">save</span>
@@ -164,13 +168,13 @@
 
         <div class="method-description">
           
-          
+          <p>Método para desfavoritar item @param @return</p>
           
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destroy</span>
   <span class="ruby-ivar">@favorite</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span>
@@ -198,16 +202,93 @@
 
         <div class="method-description">
           
-          
+          <p>Lista de itens favoritados, serializando todos os favoritos @param @return JSON @return SERIALIZER</p>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
   <span class="ruby-ivar">@favorites</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">favorites</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">json:</span> <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">WatchableSerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@favorites</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:favoritable</span>)).<span class="ruby-identifier">serialized_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-favorite_params" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">favorite_params</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CALLBACK, retorna informações do item Verifica usuário e tipo do item</p>
+
+<pre>@param
+@return hash</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="favorite_params-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">favorite_params</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">require</span>(<span class="ruby-value">:favorite</span>).<span class="ruby-identifier">permit</span>(<span class="ruby-value">:favoritable_type</span>, <span class="ruby-value">:favoritable_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-set_favorite" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_favorite</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CALLBACK, roda antes do destroy, quando o usuário quiser defavoritar o item Verifica usuário e tipo do item @param @return</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_favorite-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favorites_controller.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_favorite</span>
+  <span class="ruby-ivar">@favorite</span> = <span class="ruby-constant">Favorite</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">favoritable_type:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>].<span class="ruby-identifier">capitalize!</span>, <span class="ruby-value">favoritable_id:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">user:</span> <span class="ruby-identifier">current_user</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

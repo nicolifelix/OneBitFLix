@@ -77,6 +77,12 @@
     
     <li ><a href="#method-c-new">::new</a>
     
+    <li ><a href="#method-i-group_by_category">#group_by_category</a>
+    
+    <li ><a href="#method-i-group_by_highlight">#group_by_highlight</a>
+    
+    <li ><a href="#method-i-group_by_keep_watching">#group_by_keep_watching</a>
+    
     <li ><a href="#method-i-perform">#perform</a>
     
   </ul>
@@ -175,6 +181,117 @@
             <pre><span class="ruby-comment"># File app/services/dashboard_service.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">perform</span>
   <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;group_by_#{@type}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-group_by_category" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">group_by_category</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="group_by_category-source">
+            <pre><span class="ruby-comment"># File app/services/dashboard_service.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">group_by_category</span>
+  <span class="ruby-identifier">categories</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:movies</span>, <span class="ruby-value">:series</span>)
+  <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">CategorySerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">categories</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-group_by_highlight" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">group_by_highlight</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="group_by_highlight-source">
+            <pre><span class="ruby-comment"># File app/services/dashboard_service.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">group_by_highlight</span>
+  <span class="ruby-identifier">highlight</span> = <span class="ruby-constant">Movie</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">highlighted:</span> <span class="ruby-keyword">true</span>)
+  <span class="ruby-identifier">highlight</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Serie</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">highlighted:</span> <span class="ruby-keyword">true</span>)
+  <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">WatchableSerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">highlight</span>, <span class="ruby-value">params:</span> { <span class="ruby-value">user:</span> <span class="ruby-ivar">@user</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-group_by_keep_watching" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">group_by_keep_watching</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="group_by_keep_watching-source">
+            <pre><span class="ruby-comment"># File app/services/dashboard_service.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">group_by_keep_watching</span>
+  <span class="ruby-identifier">players</span> = <span class="ruby-constant">Player</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:movie</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">end_date:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">user:</span> <span class="ruby-ivar">@user</span>)
+  <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">MovieSerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">players</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:movie</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -122,13 +122,13 @@
 
         <div class="method-description">
           
-          
+          <p>Exibe player para reprodução do contéudo com seus dados @param @return</p>
           
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/movies_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/movies_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">show</span>
   <span class="ruby-ivar">@movie</span> = <span class="ruby-constant">Movie</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-identifier">render</span> <span class="ruby-value">json:</span> <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">MovieSerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@movie</span>, <span class="ruby-value">params:</span> { <span class="ruby-value">user:</span> <span class="ruby-identifier">current_user</span> }).<span class="ruby-identifier">serialized_json</span>

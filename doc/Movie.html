@@ -84,7 +84,17 @@
 </div>
 
     
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-highlight_episode">#highlight_episode</a>
+    
+  </ul>
+</div>
+
   </div>
 </nav>
 
@@ -108,6 +118,53 @@
     
 
     
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-highlight_episode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">highlight_episode</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Método valida se o highlight está ativo em algum epsódio de série.</p>
+
+<pre class="ruby"><span class="ruby-ivar">@param</span>
+<span class="ruby-ivar">@return</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="highlight_episode-source">
+            <pre><span class="ruby-comment"># File app/models/movie.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">highlight_episode</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">serie</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">highlighted</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:highlight_episode</span>, <span class="ruby-string">&quot;It&#39;s not possible to highlight an serie episode&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
   </section>
 
 </main>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class CreatePlayers - RDoc Documentation</title>
+<title>class RemoveElapsedTimeFromPlayer - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -83,9 +83,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-CreatePlayers">
-  <h1 id="class-CreatePlayers" class="class">
-    class CreatePlayers
+<main role="main" aria-labelledby="class-RemoveElapsedTimeFromPlayer">
+  <h1 id="class-RemoveElapsedTimeFromPlayer" class="class">
+    class RemoveElapsedTimeFromPlayer
   </h1>
 
   <section class="description">
@@ -128,17 +128,9 @@
 
           
           <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20180519173758_create_players.rb, line 2</span>
+            <pre><span class="ruby-comment"># File db/migrate/20180525024551_remove_elapsed_time_from_player.rb, line 2</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
-  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:players</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:start_date</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:end_date</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">time</span> <span class="ruby-value">:elapsed_time</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:movie</span>, <span class="ruby-value">foreign_key:</span> <span class="ruby-keyword">true</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:user</span>, <span class="ruby-value">foreign_key:</span> <span class="ruby-keyword">true</span>
-
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">remove_column</span> <span class="ruby-value">:players</span>, <span class="ruby-value">:elapsed_time</span>, <span class="ruby-value">:string</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

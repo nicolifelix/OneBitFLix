@@ -1,6 +1,9 @@
 module Highlightable
   extend ActiveSupport::Concern
   
+  #Método verifica se há mais de um entidade (filme/série) com highlight(destaque) ativo
+  # @param
+  # @return
   included do
     validate :single_highlight
 
@@ -11,7 +14,7 @@ module Highlightable
         errors.add(:single_highlight, "Only one highlighted entity is permitted")
       end
     end
-
+    
     def has_any_other_highlighted?(model)
       records = model.where(highlighted: true)
       if self.class == model

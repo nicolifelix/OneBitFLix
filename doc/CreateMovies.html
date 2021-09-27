@@ -128,7 +128,7 @@
 
           
           <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20210920172414_create_movies.rb, line 4</span>
+            <pre><span class="ruby-comment"># File db/migrate/20180519173757_create_movies.rb, line 2</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
   <span class="ruby-identifier">create_table</span> <span class="ruby-value">:movies</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">boolean</span> <span class="ruby-value">:highlighted</span>, <span class="ruby-value">default:</span> <span class="ruby-keyword">false</span>
@@ -140,7 +140,7 @@
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:featured_thumbnail_key</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:serie</span>, <span class="ruby-value">optional:</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">foreign_key:</span> <span class="ruby-keyword">true</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> <span class="ruby-value">:category</span>, <span class="ruby-value">foreign_key:</span> <span class="ruby-keyword">true</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:thumbail_cover_key</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:thumbnail_cover_key</span>
 
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span>
   <span class="ruby-keyword">end</span>

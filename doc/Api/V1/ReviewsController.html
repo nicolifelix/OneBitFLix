@@ -79,6 +79,8 @@
     
     <li ><a href="#method-i-index">#index</a>
     
+    <li ><a href="#method-i-review_params">#review_params</a>
+    
   </ul>
 </div>
 
@@ -124,13 +126,13 @@
 
         <div class="method-description">
           
-          
+          <p>Método para criação de novo review @param @return</p>
           
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/reviews_controller.rb, line 9</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/reviews_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
   <span class="ruby-ivar">@review</span> = <span class="ruby-constant">Review</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">review_params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">user:</span> <span class="ruby-identifier">current_user</span>))
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@review</span>.<span class="ruby-identifier">save</span>
@@ -162,16 +164,57 @@
 
         <div class="method-description">
           
-          
+          <p>Busca no BD e exibe lista de reviews de determinado item @param @return JSON @return SERIALIZER</p>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/reviews_controller.rb, line 4</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/reviews_controller.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
   <span class="ruby-ivar">@reviews</span> = <span class="ruby-constant">Review</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">reviewable_id:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">reviewable_type:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>].<span class="ruby-identifier">capitalize!</span>) 
   <span class="ruby-identifier">render</span> <span class="ruby-value">json:</span> <span class="ruby-constant">Api</span><span class="ruby-operator">::</span><span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ReviewSerializer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@reviews</span>, <span class="ruby-value">include:</span> [<span class="ruby-value">:user</span>]).<span class="ruby-identifier">serialized_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Private Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-review_params" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">review_params</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Método para validar a criação de um novo review @param @return</p>
+          
+          
+
+          
+          <div class="method-source-code" id="review_params-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/reviews_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">review_params</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">require</span>(<span class="ruby-value">:review</span>).<span class="ruby-identifier">permit</span>(<span class="ruby-value">:reviewable_type</span>, <span class="ruby-value">:reviewable_id</span>, <span class="ruby-value">:rating</span>, <span class="ruby-value">:description</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
