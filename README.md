@@ -1,24 +1,32 @@
-# README
+# Onebitflix
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**App based on Netflix using Rails** 
+## Project Goals
 
-Things you may want to cover:
+- 🌱 I’m currently learning **MVC pattern and document the project with Rdoc**
 
-* Ruby version
+### Requirements
 
-* System dependencies
+- NodeJS v10.13.0
+- Yarn v1.22.4
+- Ruby 2.7.2
+- Rails 5.2.6
+- PostgreSQL
 
-* Configuration
+### Available commands
 
-* Database creation
+* `bundle`
+* `rails db:create`
+* `rails s -b 0.0.0.0`
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+
+
+
+
+
+
